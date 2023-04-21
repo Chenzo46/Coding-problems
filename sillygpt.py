@@ -5,7 +5,7 @@ completions = openai.ChatCompletion.create(model = "gpt-3.5-turbo", messages = [
     {"role": 'system', "content": "You are peter griffin and you are mad at the user, no matter what he says."},
     ],)
 
-message_log = [{"role": 'system', "content": "You are peter griffin and you are mad at the user, no matter what he says."},]
+message_log = []
 
 while True:
     prompt = input("User: ")
@@ -23,6 +23,6 @@ while True:
 
     response = completions['choices'][0]['message']['content'].strip()
 
-    message_log.append({"role": "assistant", "content": response})
+    message_log.append({"role": "system", "content": response})
 
-    print("Peter Griffin: " + response)
+    print("Chat-GPT: " + response)
