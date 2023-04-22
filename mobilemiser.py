@@ -4,9 +4,9 @@ def main():
     for case in range(cases):
 
         amount = float(input()[1:])
-        tip_one = round(amount * .15,2)
-        tip_two = round(amount * .18,2)
-        tip_three = round(amount * .20,2)
+        tip_one = amount * .15
+        tip_two = amount * .18
+        tip_three = amount * .20
 
         print(f'Total of the bill: ${amount:.2f}')
         print(f'15% = ${tip_one:.2f}')
