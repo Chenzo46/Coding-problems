@@ -1,8 +1,8 @@
 def main():
     cases = int(input())
     for i in range(cases):
-        sillyString = input()
-        print(sillyString)
+        sillyStringlol = input()
+        print(sillyStringlol)
 
 
 if __name__ == '__main__':
