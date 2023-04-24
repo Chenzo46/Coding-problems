@@ -1,5 +1,7 @@
 from math import ceil
-
+import decimal
+from decimal import Decimal
+decimal.getcontext().rounding = decimal.ROUND_HALF_UP
 def main():
         
     cases = int(input())
