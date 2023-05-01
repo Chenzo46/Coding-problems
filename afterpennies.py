@@ -1,5 +1,7 @@
-from math import ceil,floor
-
+from math import ceil
+import decimal
+from decimal import Decimal
+decimal.getcontext().rounding = decimal.ROUND_HALF_UP
 def main():
         
     cases = int(input())
@@ -11,16 +13,14 @@ def main():
         
         extra_change = 0
         for charge in charges:
-
-            pennies = ceil((charge % 1) * 100)
-            pennies = 100 - pennies if pennies > 0 else 0
-            extra_change += pennies/100
-            print(f'EX: {extra_change}')
-            charge = str(ceil(charge))
+            pennies = 100 - int(str(charge).split('.')[1]) if int(str(charge).split('.')[1]) > 0 else 0
+            extra_change += pennies
+            charge = ceil(charge)
             new_charges.append(str(charge))
-
+        extra_change = str(extra_change)
+        extra_change = extra_change[:len(extra_change)-2] + '.' + extra_change[len(extra_change)-2:]
         print('\n'.join(new_charges))
-        print(str(extra_change).ljust(3,'0'))
+        print(f'{float(extra_change):.2f}')
 
 if __name__ == '__main__':
     main()
