@@ -22,7 +22,5 @@ def main():
         #Print out result
         print(f'{year} {inang} {element} {animal}')
 
-
-
 if __name__ == '__main__':
     main()
