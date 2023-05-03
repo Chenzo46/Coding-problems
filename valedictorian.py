@@ -37,7 +37,5 @@ def main():
 
         print(f'{school_name} = {students[0].name}')
 
-
-
 if __name__ == '__main__':
     main()
