@@ -7,7 +7,7 @@ def main():
         machine_states = input().split()
         for i,s in enumerate(machine_states):
             if s[0] == 'B':
-                t += int(round(8/(1 + pow(i,2)))) # rounded approximation that works for the givem range
+                t += int(round(8/(1 + pow(i,2)))) # rounded approximation that works for the given range
         a = int(t/4)
         b = t - 4*a
         print(f'{states[a]} {states[b]}')
