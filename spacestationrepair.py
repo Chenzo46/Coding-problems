@@ -4,30 +4,12 @@ def main():
         a = 0
         b = 0
         t = 0
-
         machine_states = input().split()
         for i,s in enumerate(machine_states):
             if s[0] == 'B':
-                if i == 0:
-                    t += 8
-                elif i == 1:
-                    t += 4
-                elif i == 2:
-                    t += 2
-                elif i == 3:
-                    t += 1
-
-        if t <= 3:
-            b = t
-        elif t <= 7 and t > 3:
-            b = t - 4
-        elif t <= 11 and t > 7:
-            b = t - 8
-        elif t <= 15 and t > 11:
-            b = t - 12
-
+                t += int(round(8/(1 + pow(i,2)))) # rounded approximation that works for the givem range
         a = int(t/4)
-        print(b)
+        b = t - 4*a
         print(f'{states[a]} {states[b]}')
 
 if __name__ == '__main__':
