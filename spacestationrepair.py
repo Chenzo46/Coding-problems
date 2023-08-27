@@ -16,7 +16,7 @@ if __name__ == '__main__':
     main()
 
 """
-Psuedo Code:
+Pseudo Code:
     t = 4a + b
     LEDS: [0,1,2,3]
     SYSTEMS: [8,4,2,1]
@@ -37,5 +37,5 @@ Psuedo Code:
         b = t
 
     a = int(t/4)
-    b = t - t(int(t/4))
+    b = t - 4a
 """
