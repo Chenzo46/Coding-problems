@@ -1,24 +1,11 @@
-cases = int(input())
-
-for _ in range(cases):
-
+ENDINGS = ['st','nd','rd']
+for _ in range(int(input())):
     num = input()
-    extension = ''
-    idx = -1
-    n = 0
-    for c in range(len(num)):
-        if num[c].isalpha():
-            n = int(num[c-1])
-            f_n = int(num[:c])
-            idx = c
-            if n == 1 and f_n < 10 or f_n > 19:
-                extension = 'st'
-            elif n == 2 and f_n < 10 or f_n > 19:
-                extension = 'nd'
-            elif n == 3 and f_n < 10 or f_n > 19:
-                extension = 'rd'
-            else:
-                extension = 'th'
-            break
-    
-    print(f'{num[:idx]}{extension}')
+    num = num[0:len(num)-2]
+    num_last = int(num[len(num)-1])
+
+    #Handle when the number has a 10
+    if int(num[len(num)-2:]) in range(10,20) or num_last not in [1,2,3]:
+        print(num + 'th')
+    else:
+        print(f'{num}{ENDINGS[int(num_last)-1]}')
