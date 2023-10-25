@@ -4,7 +4,6 @@ for _ in range(int(input())):
     num = num[0:len(num)-2]
     num_last = int(num[len(num)-1])
 
-    #Handle when the number has a 10
     if int(num[len(num)-2:]) in range(10,20) or num_last not in [1,2,3]:
         print(num + 'th')
     else:
