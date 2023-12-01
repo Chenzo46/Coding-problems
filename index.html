@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <center>
+        <h1 id = "gaming" class = "how">HELLO</h1>
+        <button onclick=hell() class = "wow"> Press me </button>
+        <input class = "inputBox" type = "text" id = "inputBox">
+    </center>
+    <script>
+        var storyInput = document.getElementById("gaming")
+        var inputArea = document.getElementById("inputBox")
+        var i = 0
+        var hasAlreadyCalled = false
+        var wowzersTwo = []
+        function hell(){
+            i = 0
+            var realStory = inputArea.value
+            wowzersTwo = realStory.split(" ")
+            if(hasAlreadyCalled){return}
+            setInterval(wowie,500)
+            hasAlreadyCalled = true
+        }
+        function wowie(){
+            if(i >= wowzersTwo.length){
+                return
+            }
+            storyInput.textContent = wowzersTwo[i]
+            i++
+            console.log(i)
+        }
+
+        
+    </script>
+    <style>
+        .how{
+            font-family: 'Lucida Sans';
+            font-size: 60px;
+            transition-duration: 400ms;
+        }
+        .how:hover{
+            font-size: 70px;
+        }
+
+        .wow{
+            border-radius: 20px;
+            border-width: 0px;
+            background-color: greenyellow;
+            padding: 10px;
+            font-family: 'Lucida Sans';
+            transition-duration: 500ms;
+        }
+        .wow:hover{
+            background-color: rgb(106, 171, 9);
+        }
+        .inputBox{
+            width: 400px;
+        }
+    </style>
+</body>
