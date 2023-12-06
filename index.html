@@ -6,6 +6,11 @@
         <h1 id = "gaming" class = "how">HELLO</h1>
         <button onclick=hell() class = "wow"> Press me </button>
         <input class = "inputBox" type = "text" id = "inputBox">
+        <div class="slidecontainer">
+            <h3> Speed slider </h3>
+            <input type="range" min="1" max="20" value="10" class="slider" id="sl">
+            <h3 id = "mult"> 10x </h3>
+        </div>
     </center>
     <script>
         var storyInput = document.getElementById("gaming")
@@ -13,12 +18,14 @@
         var i = 0
         var hasAlreadyCalled = false
         var wowzersTwo = []
+        const multiplierVisual = document.getElementById("mult")
+        var multiplier = 1
         function hell(){
             i = 0
             var realStory = inputArea.value
             wowzersTwo = realStory.split(" ")
             if(hasAlreadyCalled){return}
-            setInterval(wowie,500)
+            setInterval(wowie,500 * multiplier)
             hasAlreadyCalled = true
         }
         function wowie(){
@@ -29,6 +36,15 @@
             i++
             console.log(i)
         }
+
+        function updateMultiplier(){
+            multiplier = document.getElementById("sl").value/10
+            multiplierVisual.textContent = multiplier + "x"
+        }
+
+        document.getElementById("sl").oninput = function() {
+            updateMultiplier();
+        };
 
         
     </script>
