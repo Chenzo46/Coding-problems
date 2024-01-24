@@ -1,26 +1,57 @@
+class Catalog_Node:
+    parent = ''
+    name = ''
+
+    def __init__(self, input_str:str) -> None:
+        input_str = input_str.split(',')
+        self.name = input_str[0]
+        self.parent = input_str[1]
+
+    def find_catalog_node(self, node_list:list, name):
+        for node in node_list:
+            if node.name == name:
+                return node
+        return None
+
+    def calculate_depth(self, node_list:list)->int:
+        depth = 0
+        current_parent = self.find_catalog_node(node_list, self.parent)
+
+        while current_parent != None and current_parent.name != 'None':
+            current_parent = self.find_catalog_node(node_list, current_parent.parent)
+            depth += 1
+        return depth
+
+    def get_children_as_list(self,node_list:list)->list:
+        children = []
+
+        for node in node_list:
+            if node.parent == self.name:
+                children.append(node)
+        
+        return children
+    
+    def sort_children(self):
+        pass
+
+    def node_str(self, node_list:list) -> str:
+        return ('-'*self.calculate_depth(node_list)) + self.name
+
 def main():
     listing_count = int(input())
-    catalog = [input().split(',') for idx in range(listing_count)]
-    catalog = dict(catalog)
-    
-    seen_categories = []
-    catalog_sorted = dict()
+    catalog = [Catalog_Node(input()) for idx in range(listing_count)]
+    catalog = sorted(catalog, key = lambda x : (x.calculate_depth(catalog), x.name))
 
-    for category in catalog.keys():
-        if category not in seen_categories:
-            # Find all of this category's children and add it to a sorted catalog
-            child_categories = list(filter(lambda x: catalog[x] == category, catalog.keys()))
-            child_categories.sort()
-            parent_count = 0
-            current_parent = catalog[category]
-            while current_parent != 'None':
-                current_parent = catalog[current_parent]
-                parent_count += 1
-            dashes = ''
-            for parents in range(parent_count):
-                dashes += '-'
-            catalog_sorted[category] = (child_categories, dashes)
-            seen_categories.append(category)
+    catalog_sorted = []
+    
+    is_catalog_sorted = False
+
+    while not is_catalog_sorted:
+
+        pass
+
+    for n in catalog:
+        print(n.node_str(catalog))
         
 if __name__ == '__main__':
     main()

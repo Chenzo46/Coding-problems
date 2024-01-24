@@ -1,21 +1,15 @@
-def main():
-    
-    cases  = int(input())
+import itertools
 
-    for _ in range(cases):
-        n_sum = int(input().split('=')[1])
-        nums = list(map(int, input().split(',')))
+for _ in range(int(input())):
+    case_sum = int(input().split('=')[1])
+    nums = list(map(int,input().split(',')))
 
-        for n,i in enumerate(nums):
-            #For each number find all pairs,trios,etc. that add to n_sum
-            for m,j in enumerate(nums):
-                if i == j:
-                    continue
+    max_length = len(nums)
 
-                
+    answers = []
+    for rnd in range(1,len(nums)):
+        permutations = map(lambda x: '+'.join(map(str,x)),sorted(filter(lambda x : sum(x) == case_sum, set(itertools.permutations(nums, max_length)))))
+        answers.extend(permutations)
+        max_length -= 1
 
-        
-
-if __name__ == '__main__':
-    print(int('01', 2))
-    #main()
+    print(*answers, sep = '\n')
